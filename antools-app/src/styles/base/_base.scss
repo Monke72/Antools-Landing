@@ -43,3 +43,9 @@ body {
 .active {
   background-color: var(--color-accent);
 }
+.title {
+  font-size: var(--title-size);
+  color: var(--color-light);
+  line-height: 140%;
+  letter-spacing: 0%;
+}
