@@ -1,0 +1,351 @@
+@charset "UTF-8";
+/**
+  Нормализация блочной модели
+ */
+*,
+*::before,
+*::after,
+*:focus,
+*:active {
+  box-sizing: border-box;
+  border: none;
+}
+
+ul,
+li,
+a {
+  padding: 0;
+  list-style-type: none;
+  list-style: none;
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  padding: 0;
+}
+
+/**
+         Убираем внутренние отступы слева тегам списков,
+         у которых есть атрибут class
+        */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+         Убираем внешние отступы body и двум другим тегам,
+         у которых есть атрибут class
+        */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+         Убираем внешние отступы вертикали нужным тегам,
+         у которых есть атрибут class
+        */
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+         Убираем стандартный маркер маркированному списку,
+         у которого есть атрибут class
+        */
+:where(ul[class]) {
+  list-style: none;
+}
+
+/**
+         Обнуляем вертикальные внешние отступы параграфа,
+         объявляем локальную переменную для внешнего отступа вниз,
+         чтобы избежать взаимодействие с более сложным селектором
+        */
+/**
+         Внешний отступ вниз для параграфа без атрибута class,
+         который расположен не последним среди своих соседних элементов
+        */
+/**
+         Упрощаем работу с изображениями
+        */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/**
+         Наследуем свойства шрифт для полей ввода
+        */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+           Пригодится в большинстве ситуаций
+           (когда, например, нужно будет "прижать" футер к низу сайта)
+          */
+  height: 100%;
+  /**
+           Плавный скролл
+          */
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+           Пригодится в большинстве ситуаций
+           (когда, например, нужно будет "прижать" футер к низу сайта)
+          */
+  min-height: 100%;
+  /**
+           Унифицированный интерлиньяж
+          */
+  line-height: 1.5;
+}
+
+/**
+         Приводим к единому цвету svg-элементы
+        */
+svg *[stroke] {
+  stroke: currentColor;
+}
+
+/**
+         Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+        */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+         Удаляем все анимации и переходы для людей,
+         которые предпочитают их не использовать
+        */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto !important;
+  }
+}
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+ul,
+ul li {
+  list-style: none;
+}
+
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+input:focus,
+input:active,
+button:focus,
+button:active {
+  outline: none;
+}
+
+button,
+input[type=submit] {
+  display: inline-block;
+  box-shadow: none;
+  background-color: transparent;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn,
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.btn:focus,
+button:focus {
+  outline: none;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--main-size);
+  color: var(--color-grey);
+  background-color: var(--color-strict-gray);
+}
+
+* {
+  border: 0;
+}
+
+.container {
+  max-width: 1255px;
+  padding-inline: 15px;
+  margin-inline: auto;
+}
+
+.none {
+  display: none !important;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  -webkit-clip-path: inset(100%);
+          clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.button {
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.5s;
+}
+@media (hover: hover) {
+  .button:hover {
+    transform: translate(0, -2px);
+  }
+}
+@media (hover: none) {
+  .button:active {
+    transform: translate(0, -2px);
+  }
+}
+
+.active {
+  background-color: var(--color-accent);
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./../../../fonts/AnyConv.com__Poppins-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../../../fonts/AnyConv.com__Roboto.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+:root {
+  --color-grey: rgba(255, 255, 255, 0.55);
+  --color-light: rgba(255, 255, 255, 0.9);
+  --color-accent: #ff6e30;
+  --color-accent-active: #ffa537;
+  --color-accent-inactive: rgba(255, 165, 55, 0.55);
+  --color-strict-gray: #1e252b;
+  --main-size: 18px;
+  --title-size: 48px;
+  --font-family-base: "Poppins", sans-serif;
+  --font-family-alt: "Roboto", sans-serif;
+}
+
+.header {
+  margin-top: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header__name {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.header__name-image {
+  height: 38px;
+  aspect-ratio: 1;
+}
+.header__name-title {
+  color: var(--color-light);
+}
+.header__list {
+  display: flex;
+  gap: 27px;
+}
+.header__item {
+  transition: all 0.5s;
+}
+@media (hover: hover) {
+  .header__item:hover {
+    color: var(--color-accent);
+    transform: translate(0, -1px);
+  }
+}
+@media (hover: none) {
+  .header__item:active {
+    color: var(--color-accent);
+    transform: translate(0, -1px);
+  }
+}
+.header__item-menu {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.header__link {
+  color: var(--color-grey);
+  font-size: 16px;
+  transition: all 0.5s;
+}
+@media (hover: hover) {
+  .header__link:hover {
+    color: var(--color-accent);
+  }
+}
+@media (hover: none) {
+  .header__link:active {
+    color: var(--color-accent);
+  }
+}/*# sourceMappingURL=main.css.map */

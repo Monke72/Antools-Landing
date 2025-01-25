@@ -1,0 +1,48 @@
+.header {
+  margin-top: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &__name {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  &__name-image {
+    height: 38px;
+    aspect-ratio: 1;
+  }
+
+  &__name-title {
+    color: var(--color-light);
+  }
+
+  &__list {
+    display: flex;
+    gap: 27px;
+  }
+
+  &__item {
+    transition: all 0.5s;
+    @include hover {
+      color: var(--color-accent);
+      transform: translate(0, -1px);
+    }
+    &-menu {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+  }
+
+  &__link {
+    color: var(--color-grey);
+    font-size: 16px;
+    transition: all 0.5s;
+
+    @include hover {
+      color: var(--color-accent);
+    }
+  }
+}

@@ -1,0 +1,208 @@
+/**
+  Нормализация блочной модели
+ */
+*,
+*::before,
+*::after,
+*:focus,
+*:active {
+  box-sizing: border-box;
+  border: none;
+}
+
+ul,
+li,
+a {
+  padding: 0;
+  list-style-type: none;
+  list-style: none;
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  padding: 0;
+}
+
+/**
+         Убираем внутренние отступы слева тегам списков,
+         у которых есть атрибут class
+        */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+         Убираем внешние отступы body и двум другим тегам,
+         у которых есть атрибут class
+        */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+         Убираем внешние отступы вертикали нужным тегам,
+         у которых есть атрибут class
+        */
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+         Убираем стандартный маркер маркированному списку,
+         у которого есть атрибут class
+        */
+:where(ul[class]) {
+  list-style: none;
+}
+
+/**
+         Обнуляем вертикальные внешние отступы параграфа,
+         объявляем локальную переменную для внешнего отступа вниз,
+         чтобы избежать взаимодействие с более сложным селектором
+        */
+
+/**
+         Внешний отступ вниз для параграфа без атрибута class,
+         который расположен не последним среди своих соседних элементов
+        */
+
+/**
+         Упрощаем работу с изображениями
+        */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/**
+         Наследуем свойства шрифт для полей ввода
+        */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+           Пригодится в большинстве ситуаций
+           (когда, например, нужно будет "прижать" футер к низу сайта)
+          */
+  height: 100%;
+  /**
+           Плавный скролл
+          */
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+           Пригодится в большинстве ситуаций
+           (когда, например, нужно будет "прижать" футер к низу сайта)
+          */
+  min-height: 100%;
+  /**
+           Унифицированный интерлиньяж
+          */
+  line-height: 1.5;
+}
+
+/**
+         Приводим к единому цвету svg-элементы
+        */
+
+svg *[stroke] {
+  stroke: currentColor;
+}
+
+/**
+         Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+        */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+         Удаляем все анимации и переходы для людей,
+         которые предпочитают их не использовать
+        */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto !important;
+  }
+}
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+ul,
+ul li {
+  list-style: none;
+}
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+}
+input:focus,
+input:active,
+button:focus,
+button:active {
+  outline: none;
+}
+button,
+input[type="submit"] {
+  display: inline-block;
+  box-shadow: none;
+  background-color: transparent;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+.btn,
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.btn:focus,
+button:focus {
+  outline: none;
+}
