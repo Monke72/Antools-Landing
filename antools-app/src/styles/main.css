@@ -250,7 +250,7 @@ body {
   border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
-  transition: all 0.5s;
+  transition: all 0.6s;
 }
 @media (hover: hover) {
   .button:hover {
