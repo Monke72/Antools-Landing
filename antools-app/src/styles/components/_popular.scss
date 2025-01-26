@@ -1,8 +1,14 @@
 .popular {
   padding-top: 200px;
   text-align: center;
+  &__tools {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 100px;
+  }
   &__info-text {
     line-height: 25px;
     padding-top: 20px;
+    margin-bottom: 90px;
   }
 }

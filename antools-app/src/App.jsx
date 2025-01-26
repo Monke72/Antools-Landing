@@ -8,6 +8,7 @@ function App() {
     fetch("https://6790b4e0af8442fd73775266.mockapi.io/data")
       .then((res) => res.json())
       .then((json) => setData(json));
+    console.log(data);
   }, []);
 
   return (

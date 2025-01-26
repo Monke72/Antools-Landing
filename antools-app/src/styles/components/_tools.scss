@@ -1,0 +1,131 @@
+.tools {
+  &__button {
+    color: var(--color-gray);
+    padding: 9px 35px;
+    border-radius: 8px;
+    transition: all 0.2s;
+    @include hover {
+      color: var(--color-light);
+      background-color: var(--color-accent);
+    }
+  }
+  &_con {
+    border: 1px solid transparent;
+    overflow: hidden;
+    position: relative;
+    border-radius: 15px;
+    text-align: start;
+    max-width: 392px;
+    padding: 30px;
+    transition: all 0.5s;
+    transition-duration: 0.5s;
+
+    @include hover {
+      &::after {
+        content: "";
+        position: absolute;
+        width: 75px;
+        height: 74px;
+        right: -1px;
+        top: -13px;
+        border-radius: 50%;
+        -webkit-backdrop-filter: blur(15px);
+        backdrop-filter: blur(15px);
+        background: rgba(255, 110, 48, 0.6);
+        filter: blur(28px);
+      }
+      backdrop-filter: blur(50px);
+      background: rgba(40, 48, 54, 0.3);
+      stroke: rgba(255, 255, 255, 0.08) rgba(255, 255, 255, 0)
+        rgba(255, 255, 255, 0.05) rgba(255, 255, 255, 0);
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+    line-height: 30px;
+    padding-bottom: 42px;
+  }
+
+  &__text-info {
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__buttons-main {
+    display: flex;
+    gap: 12px;
+
+    &__like {
+      @include hover {
+        path {
+          fill: #fd3b41;
+          fill-opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__buttons-visit {
+  }
+}
+.top {
+  &__info {
+    display: flex;
+    gap: 30px;
+    padding-bottom: 30px;
+  }
+
+  &__info-img {
+  }
+
+  &__info-head {
+    &__name {
+      font-size: 24px;
+    }
+    &__payment {
+      color: var(--color-accent-active);
+    }
+  }
+}
+
+.tools__buttons-main__like,
+.tools__buttons-main__folder {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+  border-radius: 8px;
+}
+.tools--active {
+  background-color: #283036;
+}
+
+.tools__opacity {
+  &::after {
+    transition: all 1s;
+    content: "";
+    position: absolute;
+    width: 75px;
+    height: 74px;
+    right: -1px;
+    top: -13px;
+    border-radius: 50%;
+
+    background: rgba(255, 110, 48, 0.6);
+    filter: blur(28px);
+  }
+  border: 1px solid rgb(255, 255, 255, 0.2);
+
+  backdrop-filter: blur(50px);
+  background: rgba(40, 48, 54, 0.6);
+  stroke: rgba(255, 255, 255, 0.08) rgba(255, 255, 255, 0)
+    rgba(255, 255, 255, 0.05) rgba(255, 255, 255, 0);
+}
+.button__like-selected {
+  background-color: #283036;
+}
