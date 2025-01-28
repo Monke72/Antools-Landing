@@ -1,7 +1,9 @@
 .popular {
   padding-top: 200px;
   text-align: center;
+
   &__tools {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     row-gap: 100px;
@@ -10,5 +12,12 @@
     line-height: 25px;
     padding-top: 20px;
     margin-bottom: 90px;
+  }
+  &__button {
+    color: var(--color-accent);
+    padding: 17px 38px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    margin-top: 100px;
   }
 }

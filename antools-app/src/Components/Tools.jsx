@@ -1,58 +1,33 @@
 import { useEffect, useRef, useState } from "react";
 import React from "react";
 import ReactDOM from "react-dom";
-import figma from "../images/figma.svg";
-import invision from "../images/invision.svg";
-import notion from "../images/notion.svg";
-import sketch from "../images/sketch.svg";
-import slack from "../images/slack.svg";
-import vs from "../images/vs.svg";
 
-const iconMass = [
-  {
-    name: "Figma",
-    src: figma,
-  },
-  {
-    name: "Invision",
-    src: invision,
-  },
-  {
-    name: "Notion",
-    src: notion,
-  },
-  {
-    name: "Sketch",
-    src: sketch,
-  },
-  {
-    name: "Slack",
-    src: slack,
-  },
-  {
-    name: "Visual Studio Code",
-    src: vs,
-  },
-];
+function Tools({ data, setLimit, array }) {
+  const [like, setLike] = useState([]);
+  console.log(like);
 
-function Tools({ data }) {
-  const [like, setLike] = useState(false);
-  function handleClickLike() {
-    setLike((prev) => !prev);
+  function handleLike(index) {
+    if (like.includes(index)) {
+      setLike(like.filter((i) => i !== index)); //оставляя только те элементы, которые не равны index
+    } else {
+      setLike([...like, index]);
+    }
   }
-
   return (
     <>
       {data.map((el, index) => (
         <div
           key={index}
-          className={`tools_con ${like ? "tools__opacity" : ""}`}
+          id={index}
+          className={`tools_con ${
+            like.includes(index) ? "tools__opacity" : ""
+          }`}
         >
           <div className="tools--overlay"></div>
           <div className="top__info">
             <img
               className="top__info-img"
-              src={iconMass
+              src={array
                 .filter((img) => img.name === el.name)
                 .map((img) => img.src)}
               alt=""
@@ -69,9 +44,9 @@ function Tools({ data }) {
             <div className="tools__buttons-main">
               <button
                 className={`tools__buttons-main__like ${
-                  like ? "button__like-selected" : ""
+                  like.includes(index) ? "button__like-selected" : ""
                 }`}
-                onClick={handleClickLike}
+                onClick={() => handleLike(index)}
               >
                 <svg
                   width="26"
@@ -82,8 +57,8 @@ function Tools({ data }) {
                 >
                   <path
                     d="M18.8333 0.25C16.3833 0.25 14.225 1.475 13 3.4C11.775 1.475 9.61667 0.25 7.16667 0.25C3.31667 0.25 0.166672 3.4 0.166672 7.25C0.166672 14.1917 13 21.25 13 21.25C13 21.25 25.8333 14.25 25.8333 7.25C25.8333 3.4 22.6833 0.25 18.8333 0.25Z"
-                    fill={like ? "#FD3B41" : "white"}
-                    fillOpacity={like ? 1 : 0.38}
+                    fill={like.includes(index) ? "#FD3B41" : "white"}
+                    fillOpacity={like.includes(index) ? 1 : 0.38}
                   />
                 </svg>
               </button>
@@ -109,7 +84,14 @@ function Tools({ data }) {
               </button>
             </div>
             <div className="tools__buttons-visit">
-              <button className="tools__button">Visit</button>
+              <button
+                sx={{
+                  ":hover": { bgColor: "dark" },
+                }}
+                className="tools__button"
+              >
+                Visit
+              </button>
             </div>
           </div>
         </div>

@@ -421,6 +421,7 @@ body {
   text-align: center;
 }
 .popular__tools {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   row-gap: 100px;
@@ -429,6 +430,13 @@ body {
   line-height: 25px;
   padding-top: 20px;
   margin-bottom: 90px;
+}
+.popular__button {
+  color: var(--color-accent);
+  padding: 17px 38px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  margin-top: 100px;
 }
 
 .tools__button {
@@ -575,4 +583,39 @@ body {
 
 .button__like-selected {
   background-color: #283036;
+}
+
+.trusted {
+  padding-block: 200px;
+}
+.trusted__wrapper {
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  box-shadow: inset 0px 0px 5px rgba(255, 255, 255, 0.1019607843);
+  border-radius: 25px;
+  padding: 55px 83px;
+  background: rgba(44, 53, 61, 0.2);
+}
+.trusted__wrapper::before {
+  content: "";
+  position: absolute;
+  left: -15px;
+  top: -33px;
+  width: 100px;
+  height: 100px;
+  background-image: linear-gradient(to right bottom, #f66a28, #e66325, #d65c22, #c65620, #b74f1d, #ad4a1b, #a44518, #9a4016, #933c13, #8c3811, #86340e, #7f300b);
+  border-radius: 50%;
+  filter: blur(37px);
+}
+.trusted__title {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.5490196078);
+}
+.trusted__brands-list {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 56px;
 }/*# sourceMappingURL=main.css.map */
