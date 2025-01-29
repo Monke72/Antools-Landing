@@ -2,9 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import React from "react";
 import ReactDOM from "react-dom";
 
-function Tools({ data, setLimit, array }) {
+function Tools({ data, array, classN }) {
   const [like, setLike] = useState([]);
-  console.log(like);
+  console.log(data);
+  console.log(classN);
 
   function handleLike(index) {
     if (like.includes(index)) {
@@ -18,8 +19,7 @@ function Tools({ data, setLimit, array }) {
       {data.map((el, index) => (
         <div
           key={index}
-          id={index}
-          className={`tools_con ${
+          className={`tools_con ${classN !== undefined ? classN : ""} ${
             like.includes(index) ? "tools__opacity" : ""
           }`}
         >

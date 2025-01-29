@@ -53,7 +53,7 @@ function Popular({ data, setLimit, uploaded }) {
       </div>
       <div className="popular__tools">
         {uploaded ? (
-          <Tools data={data} setLimit={setLimit} array={iconMass} />
+          <Tools data={data} array={iconMass} />
         ) : (
           <div
             style={{

@@ -4,6 +4,9 @@ import Header from "./Components/Header/Header";
 import Popular from "./Components/Popular/Popular";
 import Trusted from "./Components/Trusted/Trusted";
 import More from "./Components/More/More";
+import Dev from "./Components/Dev/Dev";
+import Join from "./Components/Join/Join";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   const [data, setData] = useState([]);
@@ -27,6 +30,9 @@ function App() {
       <Popular data={data} setLimit={setLimit} uploaded={uploaded} />
       <Trusted />
       <More />
+      <Dev />
+      <Join />
+      <Footer />
     </>
   );
 }

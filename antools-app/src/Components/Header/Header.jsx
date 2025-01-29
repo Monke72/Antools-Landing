@@ -39,7 +39,7 @@ function Header() {
       <div className="header__buttons">
         <Button color={"var(--color-gray)"}>Login</Button>
         <Button active color={"#FDF5FF"}>
-          Gign Up
+          Sign Up
         </Button>
       </div>
     </section>

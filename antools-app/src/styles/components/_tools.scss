@@ -47,9 +47,6 @@
     padding-bottom: 42px;
   }
 
-  &__text-info {
-  }
-
   &__buttons {
     display: flex;
     align-items: center;
@@ -69,9 +66,6 @@
       }
     }
   }
-
-  &__buttons-visit {
-  }
 }
 .top {
   &__info {
@@ -80,12 +74,10 @@
     padding-bottom: 30px;
   }
 
-  &__info-img {
-  }
-
   &__info-head {
     &__name {
       font-size: 24px;
+      color: var(--color-light);
     }
     &__payment {
       color: var(--color-accent-active);
@@ -119,7 +111,7 @@
     background: rgba(255, 110, 48, 0.6);
     filter: blur(28px);
   }
-  border: 1px solid rgb(255, 255, 255, 0.2);
+  box-shadow: inset 0px 0px 5px rgba(255, 255, 255, 0.06);
 
   backdrop-filter: blur(50px);
   background: rgba(40, 48, 54, 0.6);

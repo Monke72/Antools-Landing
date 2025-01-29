@@ -1,0 +1,32 @@
+.more {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  &__info {
+    max-width: 425px;
+  }
+
+  &__info-title {
+    font-size: var(--title-size);
+    color: var(--color-light);
+    padding-bottom: 30px;
+  }
+
+  &__info-text {
+    line-height: 30px;
+    padding-bottom: 60px;
+  }
+
+  &__tools {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    gap: 50px 24px;
+  }
+}
+.more--tools {
+  max-width: 288px;
+  padding: 28px 22px;
+}
+.more__btn {
+  padding: 16px 40px;
+}

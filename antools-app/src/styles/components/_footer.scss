@@ -1,0 +1,59 @@
+.footer {
+  display: flex;
+  &__wrapper {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 70px;
+    padding-bottom: 100px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 115px;
+  }
+
+  &__item {
+    max-width: 263px;
+    &-main {
+      max-width: 263px;
+      margin-right: 150px;
+    }
+  }
+
+  &__item-logo {
+    display: flex;
+    font-size: 24px;
+    color: #fff;
+    gap: 12px;
+    padding-bottom: 25px;
+  }
+
+  &__item-info {
+    color: var(--color-light);
+    font-size: 18px;
+    padding-bottom: 20px;
+  }
+
+  &__item-text {
+    font-size: 16px;
+  }
+
+  &__item-title {
+    color: var(--color-light);
+    font-size: 22px;
+    padding-bottom: 20px;
+  }
+
+  &__item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__item-link {
+    color: rgba(255, 255, 255, 0.55);
+    transition: all 0.5s;
+    @include hover {
+      color: var(--color-accent);
+    }
+  }
+}
