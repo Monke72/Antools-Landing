@@ -7,8 +7,8 @@ import twitIccon from "./icon/twitter.svg";
 
 function Awesome() {
   return (
-    <section className="awesome ">
-      <div className="awesome-wrapper container">
+    <section className="awesome container">
+      <div className="awesome-wrapper ">
         <div className="awesome_stay-con">
           <div className="awesome__info">
             <h2 className="awesome__info-title title">

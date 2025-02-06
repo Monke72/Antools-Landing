@@ -12,14 +12,25 @@ function App() {
   const [data, setData] = useState([]);
   const [limit, setLimit] = useState(3);
   const [uploaded, setUploaded] = useState(false);
+  const [err, setError] = useState(false);
 
   useEffect(() => {
     setUploaded(false);
     fetch(
-      `https://6790b4e0af8442fd73775266.mockapi.io/data?page=1&limit=${limit}`
+      `http://6790b4e0af8442fd73775266.mockapi.io/data?page=1&limit=${limit}`
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return res.json();
+      })
       .then((json) => setData(json))
+
+      .catch((e) => {
+        console.log(e);
+        setError(true);
+      })
       .finally(() => setUploaded(true));
   }, [limit]);
 
@@ -27,7 +38,8 @@ function App() {
     <>
       <Header />
       <Awesome />
-      <Popular data={data} setLimit={setLimit} uploaded={uploaded} />
+
+      <Popular data={data} setLimit={setLimit} uploaded={uploaded} err={err} />
       <Trusted />
       <More />
       <Dev />

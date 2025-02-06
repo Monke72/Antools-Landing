@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   &__name {
     display: flex;
     gap: 12px;
@@ -45,4 +46,114 @@
       color: var(--color-accent);
     }
   }
+}
+
+.ant-menu {
+  position: relative;
+}
+.ant-menu-submenu-inline {
+  width: 100%;
+}
+:where(.css-dev-only-do-not-override-cdzvx5).ant-menu-inline
+  .ant-menu-sub.ant-menu-inline {
+  position: absolute;
+  width: 100%;
+}
+.ant-menu-submenu-title {
+  background-color: var(--color-strict-gray);
+  max-width: 200px;
+}
+.ant-menu {
+  background-color: var(--color-strict-gray);
+  width: 205px !important;
+}
+.ant-menu-submenu-title {
+  height: 30px;
+  color: var(--color-accent) !important;
+}
+.header__burger {
+  @include desktop {
+    width: 205px;
+  }
+}
+.ant-menu-item {
+  max-width: 200px;
+  @include hover {
+    color: var(--color-accent) !important;
+  }
+}
+.ant-menu-item-selected {
+  background-color: var(--color-accent) !important;
+  color: #fff !important;
+}
+
+:where(.css-dev-only-do-not-override-cdzvx5).ant-menu-light .ant-menu-item {
+  color: var(--color-grey);
+}
+.ant-menu-item.ant-menu-item-selected {
+  @include hover {
+    color: var(--color-grey) !important;
+  }
+}
+.ant-menu-sub {
+  -webkit-box-shadow: 0px 5px 37px 10px #ff6e30b3 inset !important;
+  -moz-box-shadow: 0px 5px 37px 10px #ff6e30b3 inset !important;
+  box-shadow: 0px 5px 37px 10px #ff6e30b3 inset !important;
+  border-radius: 8px !important;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+}
+.ant-modal-content {
+  background-color: var(--color-strict-gray) !important;
+  color: #fff;
+}
+.ant-modal-title {
+  background-color: var(--color-strict-gray) !important;
+  color: #fff !important;
+  font-size: 20px !important;
+  padding-bottom: 15px;
+}
+.input__class {
+  max-width: 200px;
+  border-radius: 8px;
+  padding: 2px 5px;
+  background-color: var(--color-strict-gray);
+  border: 1px solid var(--color-grey);
+  color: var(--color-grey);
+}
+.label__for {
+  padding-bottom: 5px;
+}
+.field {
+  padding-bottom: 15px;
+}
+.input__new {
+  color: var(--color-grey);
+  transition: all 0.2s;
+  @include hover {
+    color: var(--color-accent);
+  }
+}
+.input__buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: start;
+}
+.input__sign {
+  width: fit-content;
+  color: var(--color-grey);
+  @include hover {
+    color: var(--color-accent);
+  }
+}
+.ant-btn-variant-solid {
+  background-color: var(--color-accent) !important;
+}
+.ant-btn-submit {
+  display: none;
+}
+.input__error {
+  border: 1px solid red;
 }

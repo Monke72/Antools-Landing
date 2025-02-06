@@ -15,6 +15,8 @@
   }
 
   &__image {
+    position: absolute;
+    right: 0;
     width: clamp(14rem, 11.3099rem + 28.5446vw, 37rem);
   }
 }

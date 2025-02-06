@@ -36,7 +36,7 @@ const iconMass = [
   },
 ];
 
-function Popular({ data, setLimit, uploaded }) {
+function Popular({ data, setLimit, uploaded, err }) {
   const [visible, setVisible] = useState(true);
   function handleClickDel() {
     setLimit(6);
@@ -51,22 +51,27 @@ function Popular({ data, setLimit, uploaded }) {
           in the world
         </p>
       </div>
-      <div className="popular__tools">
-        {uploaded ? (
-          <Tools data={data} array={iconMass} />
-        ) : (
-          <div
-            style={{
-              position: "absolute",
-              top: "50%",
-              width: "100%",
-            }}
-          >
-            <Spin indicator={<LoadingOutlined spin />} size="large" />
+      <div className={`popular__tools ${err && "err"}`}>
+        {err ? (
+          <div className={`popular__error ${err && "err"}`}>
+            Ошибка: Сервер временно недоступен. Мы работаем над решением этой
+            проблемы.
           </div>
+        ) : (
+          (uploaded && <Tools data={data} array={iconMass} />) || (
+            <div
+              style={{
+                position: "absolute",
+                top: "50%",
+                width: "100%",
+              }}
+            >
+              <Spin indicator={<LoadingOutlined spin />} size="large" />
+            </div>
+          )
         )}
       </div>
-      {visible && uploaded ? (
+      {visible && uploaded && !err ? (
         <button className="popular__button" onClick={handleClickDel}>
           Load more
         </button>

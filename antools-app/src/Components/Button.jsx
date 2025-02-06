@@ -1,6 +1,7 @@
-function Button({ children, color, active, padding, btnClass }) {
+function Button({ children, color, active, padding, btnClass, showModal }) {
   return (
     <button
+      onClick={showModal}
       className={`button ${active ? "active" : ""} ${btnClass ? btnClass : ""}`}
       style={{ color: color, padding: padding }}
     >
