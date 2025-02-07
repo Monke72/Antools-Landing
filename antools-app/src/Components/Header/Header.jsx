@@ -3,7 +3,7 @@ import strDown from "./Icon/Vector.svg";
 import Buttonn from "../Button";
 import { Menu } from "antd";
 import { AppstoreOutlined } from "@ant-design/icons";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button, Modal } from "antd";
 
 const items = [
@@ -30,27 +30,97 @@ const items = [
 ];
 
 function Header() {
+  // login modal
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
-  const [logValue, setLogValue] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [inputError, setInputError] = useState(false);
-  const inputLog = useRef();
+  const [emailDirty, setEmailDirty] = useState(false);
+  const [passwordDirty, setPAsswordDirty] = useState(false);
+  const [emailError, setEmailError] = useState("Емаил не может быть пустым");
+  const [passwordlError, setPasswordError] = useState(
+    "Пароль не может быть пустым"
+  );
+  const [formValid, setFormValid] = useState(false);
+  //sign up modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [openSign, setOpenSign] = useState(false);
+  const [confirmLoadingSign, setConfirmLoadingSign] = useState(false);
+  const [loginSignDirty, setLoginSignDirty] = useState(false);
+  const [passwordSignDirty, setPasswordSignDirty] = useState(false);
+  const [dateSignDirty, setDateSignDirty] = useState(false);
+  const [nameSignDirty, setNameSignDirty] = useState(false);
+
+  const showModalSign = () => {
+    setOpenSign(true);
+  };
+
+  useEffect(() => {
+    if (emailError || passwordlError) {
+      setFormValid(false);
+    } else {
+      setFormValid(true);
+    }
+  }, [emailError, passwordlError]);
+
+  const emailHandler = (e) => {
+    setEmail(e.target.value);
+    var re = /\S+@\S+\.\S+/;
+    if (!re.test(e.target.value)) {
+      setEmailError("Неккоректный емаил");
+    } else {
+      setEmailError("");
+    }
+  };
+
+  const passwordHandler = (e) => {
+    setPassword(e.target.value);
+    if (e.target.value.length < 3 || e.target.value.length > 8) {
+      console.log(e.target.value.length);
+
+      setPasswordError("Пароль должен быть длиннее 3 и меньше 8 символов");
+    } else if (!e.target.value) {
+      setPasswordError("Пароль не может быть пустым");
+    } else {
+      setPasswordError("");
+    }
+  };
+
+  const blurHndler = (e) => {
+    switch (e.target.name) {
+      case "email":
+        setEmailDirty(true);
+        break;
+      case "password":
+        setPAsswordDirty(true);
+        break;
+      case "sign__name":
+        setLoginSignDirty(true);
+        break;
+      case "sign__password":
+        setPasswordSignDirty(true);
+        break;
+      case "sign__date":
+        setDateSignDirty(true);
+        break;
+      case "sign__name":
+        setNameSignDirty(true);
+        break;
+    }
+  };
 
   // const [modalText, setModalText] = useState("Content of the modal");
   const showModal = () => {
     setOpen(true);
   };
   const handleOk = () => {
-    if (inputLog.current.value.length < 3) {
-      setInputError(true);
-      return;
-    } else {
-      setConfirmLoading(true);
-      setTimeout(() => {
-        setOpen(false);
-        setConfirmLoading(false);
-      }, 2000);
-    }
+    setInputError(false);
+    setConfirmLoading(true);
+    setTimeout(() => {
+      setOpen(false);
+      setConfirmLoading(false);
+    }, 500);
   };
   const handleCancel = () => {
     console.log("Clicked cancel button");
@@ -61,6 +131,17 @@ function Header() {
 
   const onClick = (e) => {
     console.log("click ", e);
+  };
+
+  const handleCancelSign = () => {
+    setOpenSign(false);
+  };
+  const handleOkSign = () => {
+    setConfirmLoading(true);
+    setTimeout(() => {
+      setOpenSign(false);
+      setConfirmLoading(false);
+    }, 1500);
   };
 
   return (
@@ -113,7 +194,7 @@ function Header() {
         <Buttonn color={"var(--color-gray)"} showModal={showModal}>
           Login
         </Buttonn>
-        <Buttonn active color={"#FDF5FF"}>
+        <Buttonn active color={"#FDF5FF"} showModal={showModalSign}>
           Sign Up
         </Buttonn>
       </div>
@@ -131,31 +212,32 @@ function Header() {
             <label className="label__for" htmlFor="login">
               Введите логин
             </label>
+            {emailDirty && emailError && <span>{emailError}</span>}
             <input
-              onChange={(e) => setLogValue(e.target.value)}
-              value={logValue}
+              value={email}
+              onBlur={(e) => blurHndler(e)}
+              onChange={(e) => emailHandler(e)}
               type="text"
-              ref={inputLog}
               id="login"
-              name="login"
+              name="email"
               className={`input__class ${inputError && "input__error"}`}
               required
-              minLength={5}
-              maxLength={12}
             />
           </p>
           <p className="field">
             <label className="label__for" htmlFor="password">
               Введите пароль
             </label>
+            {passwordDirty && passwordlError && <span>{passwordlError}</span>}
             <input
+              onBlur={(e) => blurHndler(e)}
               type="text"
               id="password"
               name="password"
+              value={password}
               className="input__class"
+              onChange={(e) => passwordHandler(e)}
               required
-              minLength={5}
-              maxLength={12}
             />
           </p>
         </form>
@@ -164,6 +246,88 @@ function Header() {
             Забыли пароль?
           </a>
           <button className="input__sign">Нету аккаунта?</button>
+        </div>
+
+        <div className="header__footer-form">
+          <button className="form__cancel" onClick={handleCancel}>
+            Выйти
+          </button>
+          <button
+            className="form__entry"
+            disabled={!formValid}
+            onClick={handleOk}
+          >
+            Вoйти
+          </button>
+        </div>
+      </Modal>
+      <Modal
+        title="Зарегестрируйте аккаунт!"
+        open={openSign}
+        onCancel={handleCancelSign}
+        onOk={handleOkSign}
+        confirmLoading={confirmLoadingSign}
+      >
+        <form action="sign">
+          <p className="field">
+            <label className="label__for" htmlFor="sign__name">
+              Введите имя
+            </label>
+            <input
+              onBlur={(e) => blurHndler(e)}
+              className="input__class"
+              type="text"
+              name="sign__name"
+              id="sign__name"
+            />
+          </p>
+          <p className="field">
+            <label className="label__for" htmlFor="sign__date">
+              Введите дату рождения
+            </label>
+            <input
+              onBlur={(e) => blurHndler(e)}
+              className="input__class"
+              type="text"
+              name="sign__date"
+              id="sign__date"
+            />
+          </p>
+          <p className="field">
+            <label className="label__for" htmlFor="sign__login">
+              Введите логин
+            </label>
+            <input
+              onBlur={(e) => blurHndler(e)}
+              className="input__class"
+              type="text"
+              name="sign__login"
+              id="sign__login"
+            />
+          </p>
+          <p className="field">
+            <label className="label__for" htmlFor="sign__password">
+              Придумайте пароль
+            </label>
+            <input
+              onBlur={(e) => blurHndler(e)}
+              className="input__class"
+              type="text"
+              name="sign__password"
+              id="sign__password"
+            />
+          </p>
+        </form>
+        <div className="header__footer-form">
+          <button
+            className="sign__close form__cancel"
+            onClick={handleCancelSign}
+          >
+            Выйти
+          </button>
+          <button className="sign__close form__entry" onClick={handleOkSign}>
+            Зарегестрировать аккаунт
+          </button>
         </div>
       </Modal>
     </section>
