@@ -182,3 +182,8 @@
   justify-content: end;
   gap: 20px;
 }
+button {
+  &:disabled {
+    pointer-events: none;
+  }
+}

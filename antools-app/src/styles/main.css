@@ -554,6 +554,10 @@ body {
   gap: 20px;
 }
 
+button:disabled {
+  pointer-events: none;
+}
+
 .awesome {
   display: flex;
   align-items: start;

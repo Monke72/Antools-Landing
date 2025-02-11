@@ -5,6 +5,7 @@ import { Menu } from "antd";
 import { AppstoreOutlined } from "@ant-design/icons";
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Modal } from "antd";
+import { DatePicker, Space } from "antd";
 
 const items = [
   {
@@ -47,14 +48,61 @@ function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [openSign, setOpenSign] = useState(false);
   const [confirmLoadingSign, setConfirmLoadingSign] = useState(false);
+  const [signName, setSignName] = useState("");
+  const [signEmail, setSignEmail] = useState("");
+  const [signPassword, setSignPassword] = useState("");
   const [loginSignDirty, setLoginSignDirty] = useState(false);
   const [passwordSignDirty, setPasswordSignDirty] = useState(false);
   const [dateSignDirty, setDateSignDirty] = useState(false);
   const [nameSignDirty, setNameSignDirty] = useState(false);
+  const [formError, setFormError] = useState({
+    loginError: false,
+    passwordError: "Поле не может быть пустым",
+    dateError: "Поле не может быть пустым",
+    nameError: "Поле не может быть пустым",
+  });
+
+  const [adult, setAdult] = useState(null);
+  const [isDatePick, setIsDatePick] = useState(false);
+
+  const dateInput = useRef();
+  console.log(dateInput.current);
 
   const showModalSign = () => {
     setOpenSign(true);
   };
+
+  function isAdult(birthdateString) {
+    const birthdate = new Date(birthdateString);
+    const today = new Date();
+    const age = today.getFullYear() - birthdate.getFullYear();
+
+    // Корректировка возраста, если день рождения еще не наступил в этом году
+    if (
+      today.getMonth() < birthdate.getMonth() ||
+      (today.getMonth() === birthdate.getMonth() &&
+        today.getDate() < birthdate.getDate())
+    ) {
+      return age - 1 >= 18;
+    }
+
+    return age >= 18;
+  }
+
+  // setInterval(() => {
+  //   console.log(formError.nameError, nameSignDirty);
+  // }, 3000);
+
+  useEffect(() => {
+    console.log(isDatePick);
+
+    if (dateSignDirty && !adult) {
+      setIsDatePick(true);
+    } else {
+      setIsDatePick(false);
+    }
+    console.log(isDatePick);
+  }, [adult]);
 
   useEffect(() => {
     if (emailError || passwordlError) {
@@ -74,6 +122,20 @@ function Header() {
     }
   };
 
+  const signEmailHandler = (e) => {
+    setSignEmail(e.target.value);
+    const re = /\S+@\S+\.\S+/;
+
+    if (!re.test(e.target.value)) {
+      setFormError({ ...formError, loginError: "Неккоректный емаил" });
+    }
+    if (e.target.value.length == 0) {
+      setFormError({ ...formError, loginError: "Заполните поле" });
+    } else {
+      setFormError({ ...formError, loginError: false });
+    }
+  };
+
   const passwordHandler = (e) => {
     setPassword(e.target.value);
     if (e.target.value.length < 3 || e.target.value.length > 8) {
@@ -87,6 +149,48 @@ function Header() {
     }
   };
 
+  const signNameHandler = (e) => {
+    setSignName(e.target.value);
+
+    if (!e.target.value) {
+      setFormError({
+        ...formError,
+        nameError: "Поле не может быть пустым!",
+      });
+    } else if (e.target.value.length < 3 || e.target.value.length > 11) {
+      setFormError({
+        ...formError,
+        nameError: "Имя должно быть не короче 3 символов и не длиннее 11",
+      });
+    } else {
+      setFormError({
+        ...formError,
+        nameError: "",
+      });
+    }
+  };
+
+  const signPasswordHandler = (e) => {
+    setSignPassword(e.target.value);
+
+    if (e.target.value.length == 0) {
+      setFormError({
+        ...formError,
+        passwordError: "Поле не может быть пустым",
+      });
+    } else if (e.target.value.length < 3 || e.target.value.length > 8) {
+      setFormError({
+        ...formError,
+        passwordError: "Пароль не может быть короче 3 и длиннее 8 символом",
+      });
+    } else {
+      setFormError({
+        ...formError,
+        passwordError: "",
+      });
+    }
+  };
+
   const blurHndler = (e) => {
     switch (e.target.name) {
       case "email":
@@ -95,7 +199,7 @@ function Header() {
       case "password":
         setPAsswordDirty(true);
         break;
-      case "sign__name":
+      case "sign__login":
         setLoginSignDirty(true);
         break;
       case "sign__password":
@@ -144,6 +248,16 @@ function Header() {
     }, 1500);
   };
 
+  const onChange = (date, dateString) => {
+    console.log(date, dateString);
+    const ady = isAdult(dateString);
+    setAdult(ady);
+    console.log(ady);
+  };
+
+  function clickB() {
+    console.log("e");
+  }
   return (
     <section className="header container">
       <div className="header__name">
@@ -273,7 +387,14 @@ function Header() {
             <label className="label__for" htmlFor="sign__name">
               Введите имя
             </label>
+
+            {nameSignDirty && formError.nameError && (
+              <span>{formError.nameError}</span>
+            )}
+
             <input
+              value={signName}
+              onChange={(e) => signNameHandler(e)}
               onBlur={(e) => blurHndler(e)}
               className="input__class"
               type="text"
@@ -281,35 +402,49 @@ function Header() {
               id="sign__name"
             />
           </p>
-          <p className="field">
+
+          <div className="field">
             <label className="label__for" htmlFor="sign__date">
               Введите дату рождения
             </label>
-            <input
-              onBlur={(e) => blurHndler(e)}
-              className="input__class"
-              type="text"
+            {isDatePick && <span style={{ color: "red" }}>Вам нет 18!</span>}
+
+            <DatePicker
               name="sign__date"
               id="sign__date"
+              onBlur={(e) => blurHndler(e)}
+              onChange={onChange}
+              className="input__class"
             />
-          </p>
+          </div>
           <p className="field">
             <label className="label__for" htmlFor="sign__login">
               Введите логин
             </label>
+            {loginSignDirty && formError.loginError && (
+              <span>{formError.loginError}</span>
+            )}
             <input
+              value={signEmail}
               onBlur={(e) => blurHndler(e)}
+              onChange={(e) => signEmailHandler(e)}
               className="input__class"
               type="text"
               name="sign__login"
               id="sign__login"
+              required
             />
           </p>
           <p className="field">
             <label className="label__for" htmlFor="sign__password">
               Придумайте пароль
             </label>
+            {passwordSignDirty && formError.passwordError && (
+              <span>{formError.passwordError}</span>
+            )}
             <input
+              value={signPassword}
+              onChange={(e) => signPasswordHandler(e)}
               onBlur={(e) => blurHndler(e)}
               className="input__class"
               type="text"
@@ -325,7 +460,11 @@ function Header() {
           >
             Выйти
           </button>
-          <button className="sign__close form__entry" onClick={handleOkSign}>
+          <button
+            className="sign__close form__entry"
+            onClick={handleOkSign}
+            disabled={true}
+          >
             Зарегестрировать аккаунт
           </button>
         </div>
