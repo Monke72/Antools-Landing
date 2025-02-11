@@ -8,6 +8,9 @@
       color: var(--color-light);
       background-color: var(--color-accent);
     }
+    @include desktop {
+      padding: 9px 20px;
+    }
   }
   &_con {
     border: 1px solid transparent;
@@ -19,6 +22,9 @@
     padding: 30px;
     transition: all 0.5s;
     transition-duration: 0.5s;
+    @include desktop {
+      padding: 20px;
+    }
 
     @include hover {
       &::after {

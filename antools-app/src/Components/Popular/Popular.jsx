@@ -31,7 +31,7 @@ const iconMass = [
     src: slack,
   },
   {
-    name: "Visual Studio Code",
+    name: "VS Code",
     src: vs,
   },
 ];

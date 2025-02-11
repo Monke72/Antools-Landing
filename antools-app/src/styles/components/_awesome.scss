@@ -12,12 +12,18 @@
   &__info-text {
     line-height: 30px;
     padding-bottom: 60px;
+    @include desktop {
+      padding-bottom: 40px;
+    }
   }
 
   &__image {
     position: absolute;
     right: 0;
     width: clamp(14rem, 11.3099rem + 28.5446vw, 37rem);
+    @include desktop {
+      width: clamp(11rem, 9.3099rem + 28.5446vw, 37rem);
+    }
   }
 }
 
@@ -48,6 +54,9 @@
   padding-top: 8vw;
   gap: 37px;
   transition: all 0.5s;
+  @include desktop {
+    padding-top: 4vw;
+  }
   img {
     @include hover {
       transform: scale(1.2);

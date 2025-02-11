@@ -1,11 +1,14 @@
 .dev {
-  padding-top: 200px;
+  padding-top: var(--padding-section);
 
   &__slide {
     display: flex !important;
     justify-content: center;
     align-items: center;
     gap: 60px;
+    @include desktop {
+      gap: 30px;
+    }
   }
 
   &__slide-people {
@@ -61,6 +64,9 @@
     max-width: 395px;
     line-height: 30px;
     letter-spacing: 1.5%;
+    @include desktop {
+      font-size: 12px;
+    }
     &__text {
       position: relative;
       &::before {
@@ -120,4 +126,9 @@
 }
 .ant-carousel .slick-dots-bottom {
   bottom: -100px;
+}
+.dev__slide-people__image {
+  @include desktop {
+    max-width: 370px;
+  }
 }

@@ -1,5 +1,5 @@
 .trusted {
-  padding-block: 200px;
+  padding-block: var(--padding-section);
 
   &__wrapper {
     overflow: hidden;
@@ -9,6 +9,9 @@
     border-radius: 25px;
     padding: 55px 83px;
     background: rgba(44, 53, 61, 0.2);
+    @include desktop {
+      padding: 48px 65px;
+    }
 
     &::before {
       content: "";
@@ -42,19 +45,20 @@
     color: #ffffff8c;
   }
 
-  &__brands {
-  }
-
   &__brands-list {
     display: flex;
     gap: 10px;
     justify-content: space-between;
     align-items: center;
     padding-top: 56px;
+    @include desktop {
+      padding-top: 44px;
+    }
   }
 
   &__brands-item {
+    @include desktop {
+      max-width: 145px;
+    }
   }
-}
-.container {
 }

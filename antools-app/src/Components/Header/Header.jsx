@@ -7,6 +7,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { Button, Modal } from "antd";
 import { DatePicker, Space } from "antd";
 
+console.log(111 === true);
+
 const items = [
   {
     key: "sub1",
@@ -45,7 +47,6 @@ function Header() {
   );
   const [formValid, setFormValid] = useState(false);
   //sign up modal
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [openSign, setOpenSign] = useState(false);
   const [confirmLoadingSign, setConfirmLoadingSign] = useState(false);
   const [signName, setSignName] = useState("");
@@ -56,17 +57,43 @@ function Header() {
   const [dateSignDirty, setDateSignDirty] = useState(false);
   const [nameSignDirty, setNameSignDirty] = useState(false);
   const [formError, setFormError] = useState({
-    loginError: false,
-    passwordError: "Поле не может быть пустым",
-    dateError: "Поле не может быть пустым",
-    nameError: "Поле не может быть пустым",
+    loginError: "",
+    passwordError: "",
+    dateError: "",
+    nameError: "",
   });
-
   const [adult, setAdult] = useState(null);
   const [isDatePick, setIsDatePick] = useState(false);
+  const [signApproved, setSignApproved] = useState(false);
 
-  const dateInput = useRef();
-  console.log(dateInput.current);
+  useEffect(() => {
+    if (
+      signName !== "" &&
+      !formError.nameError &&
+      signEmail !== "" &&
+      !formError.loginError &&
+      signPassword !== "" &&
+      !formError.passwordError &&
+      !isDatePick
+    ) {
+      setSignApproved(false);
+    } else {
+      setSignApproved(true);
+    }
+    console.log(
+      signName !== "" &&
+        !formError.nameError &&
+        signEmail !== "" &&
+        !formError.loginError &&
+        signPassword !== "" &&
+        !formError.passwordError
+    );
+  }, [
+    isDatePick,
+    formError.loginError,
+    formError.passwordError,
+    formError.nameError,
+  ]);
 
   const showModalSign = () => {
     setOpenSign(true);
@@ -88,10 +115,6 @@ function Header() {
 
     return age >= 18;
   }
-
-  // setInterval(() => {
-  //   console.log(formError.nameError, nameSignDirty);
-  // }, 3000);
 
   useEffect(() => {
     console.log(isDatePick);
@@ -126,13 +149,12 @@ function Header() {
     setSignEmail(e.target.value);
     const re = /\S+@\S+\.\S+/;
 
-    if (!re.test(e.target.value)) {
-      setFormError({ ...formError, loginError: "Неккоректный емаил" });
-    }
     if (e.target.value.length == 0) {
       setFormError({ ...formError, loginError: "Заполните поле" });
+    } else if (!re.test(e.target.value)) {
+      setFormError({ ...formError, loginError: "Неккоректный емаил" });
     } else {
-      setFormError({ ...formError, loginError: false });
+      setFormError({ ...formError, loginError: "" });
     }
   };
 
@@ -255,9 +277,6 @@ function Header() {
     console.log(ady);
   };
 
-  function clickB() {
-    console.log("e");
-  }
   return (
     <section className="header container">
       <div className="header__name">
@@ -463,7 +482,7 @@ function Header() {
           <button
             className="sign__close form__entry"
             onClick={handleOkSign}
-            disabled={true}
+            disabled={signApproved}
           >
             Зарегестрировать аккаунт
           </button>

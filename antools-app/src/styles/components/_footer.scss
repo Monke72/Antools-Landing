@@ -9,6 +9,9 @@
   &__list {
     display: flex;
     gap: 115px;
+    @include desktop {
+      gap: 70px;
+    }
   }
 
   &__item {
@@ -16,6 +19,9 @@
     &-main {
       max-width: 263px;
       margin-right: 150px;
+      @include desktop {
+        margin-right: 50px;
+      }
     }
   }
 
@@ -41,6 +47,7 @@
     color: var(--color-light);
     font-size: 22px;
     padding-bottom: 20px;
+    white-space: nowrap;
   }
 
   &__item-list {
