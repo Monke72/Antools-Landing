@@ -3,10 +3,22 @@
   align-items: start;
   justify-content: space-between;
   margin-top: 60px;
+  @include mobile-s {
+    justify-content: center;
+    text-align: center;
+  }
 
   &__info-title {
     padding-top: 45px;
     padding-bottom: 26px;
+    @include mobile {
+      padding-top: 35px;
+      padding-bottom: 20px;
+    }
+    @include mobile-s {
+      padding-top: 10px;
+      padding-bottom: 15px;
+    }
   }
 
   &__info-text {
@@ -14,6 +26,13 @@
     padding-bottom: 60px;
     @include desktop {
       padding-bottom: 40px;
+    }
+    @include mobile {
+      padding-bottom: 30px;
+      line-height: 23px;
+    }
+    @include mobile-s {
+      padding-bottom: 20px;
     }
   }
 
@@ -23,6 +42,12 @@
     width: clamp(14rem, 11.3099rem + 28.5446vw, 37rem);
     @include desktop {
       width: clamp(11rem, 9.3099rem + 28.5446vw, 37rem);
+    }
+    @include mobile {
+      width: clamp(10rem, 7.0099rem + 28.5446vw, 37rem);
+    }
+    @include mobile-s {
+      display: none;
     }
   }
 }
@@ -61,5 +86,21 @@
     @include hover {
       transform: scale(1.2);
     }
+  }
+  @include mobile-s {
+    justify-content: center;
+  }
+}
+.awesome__socials-icon {
+  @include mobile {
+    max-width: 30px;
+  }
+  @include mobile-s {
+    max-width: 27px;
+  }
+}
+.awesome__btn {
+  @include mobile {
+    padding: 8px 18px;
   }
 }

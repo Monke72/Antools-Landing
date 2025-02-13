@@ -4,7 +4,6 @@ import searchIcon from "./icon/search.svg";
 import facebookIcon from "./icon/facebook.svg";
 import instIcon from "./icon/instagram.svg";
 import twitIccon from "./icon/twitter.svg";
-
 function Awesome() {
   return (
     <section className="awesome container">
@@ -25,7 +24,7 @@ function Awesome() {
                 </span>
                 <input type="text" placeholder="find more than 430+ tools..." />
               </div>
-              <Button color={"#fff"} active>
+              <Button btnClass="awesome__btn" color={"#fff"} active>
                 Search
               </Button>
             </form>
@@ -34,17 +33,29 @@ function Awesome() {
             <ul className="awesome__socials-list">
               <li className="awesome__socials-item">
                 <a href="" className="awesome__socials-link">
-                  <img src={facebookIcon} alt="" />
+                  <img
+                    className="awesome__socials-icon"
+                    src={facebookIcon}
+                    alt=""
+                  />
                 </a>
               </li>
               <li className="awesome__socials-item">
                 <a href="" className="awesome__socials-link">
-                  <img src={instIcon} alt="" />
+                  <img
+                    className="awesome__socials-icon"
+                    src={instIcon}
+                    alt=""
+                  />
                 </a>
               </li>
               <li className="awesome__socials-item">
                 <a href="" className="awesome__socials-link">
-                  <img src={twitIccon} alt="" />
+                  <img
+                    className="awesome__socials-icon"
+                    src={twitIccon}
+                    alt=""
+                  />
                 </a>
               </li>
             </ul>

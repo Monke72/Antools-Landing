@@ -5,10 +5,26 @@
   @include desktop {
     gap: 35px;
   }
+  @include mobile {
+    gap: 8px;
+  }
+  @include mobile-s {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+  }
   &__info {
     max-width: 425px;
     @include desktop {
       max-width: 300px;
+    }
+    @include mobile {
+      max-width: 240px;
+    }
+    @media (max-width: 685px) {
+      max-width: 210px;
     }
   }
 
@@ -19,6 +35,9 @@
     @include desktop {
       padding-bottom: 20px;
     }
+    @include mobile {
+      padding-bottom: 15px;
+    }
   }
 
   &__info-text {
@@ -26,6 +45,10 @@
     padding-bottom: 60px;
     @include desktop {
       padding-bottom: 45px;
+    }
+    @include mobile {
+      line-height: 25px;
+      padding-bottom: 30px;
     }
   }
 
@@ -36,11 +59,17 @@
     @include desktop {
       gap: 25px 20px;
     }
+    @include mobile {
+      gap: 17px 10px;
+    }
   }
 }
 .more--tools {
   max-width: 288px;
   padding: 28px 22px;
+  @include mobile-s {
+    padding: 12px;
+  }
 }
 .more__btn {
   padding: 16px 40px;

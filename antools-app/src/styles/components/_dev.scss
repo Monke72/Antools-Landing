@@ -9,6 +9,9 @@
     @include desktop {
       gap: 30px;
     }
+    @include mobile {
+      gap: 10px;
+    }
   }
 
   &__slide-people {
@@ -25,6 +28,10 @@
       background: rgba(40, 48, 54, 0.2);
       padding: 10px 22px;
       box-shadow: inset 0px 0px 8px rgba(255, 255, 255, 0.13);
+      @include mobile {
+        padding: 5px 14px;
+        bottom: 10px;
+      }
       &::after {
         content: "";
         position: absolute;
@@ -50,10 +57,16 @@
       &-all {
         color: rgba(255, 255, 255, 0.78);
         font-size: 26px;
+        @include mobile {
+          font-size: 16px;
+        }
       }
       &-prof {
         color: var(--color-grey);
         font-size: 16px;
+        @include mobile {
+          font-size: 12px;
+        }
       }
     }
   }
@@ -130,5 +143,14 @@
 .dev__slide-people__image {
   @include desktop {
     max-width: 370px;
+  }
+  @include mobile {
+    max-width: 265px;
+  }
+}
+.dev__slide-info__text {
+  @include mobile {
+    max-width: 210px;
+    line-height: 25px;
   }
 }

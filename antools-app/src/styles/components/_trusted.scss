@@ -12,6 +12,12 @@
     @include desktop {
       padding: 48px 65px;
     }
+    @include mobile {
+      padding: 40px 35px;
+    }
+    @include mobile-s {
+      padding: 35px 25px;
+    }
 
     &::before {
       content: "";
@@ -43,6 +49,12 @@
   &__title {
     font-size: 24px;
     color: #ffffff8c;
+    @include mobile {
+      font-size: 22px;
+    }
+    @include mobile-s {
+      font-size: 20px;
+    }
   }
 
   &__brands-list {
@@ -54,11 +66,24 @@
     @include desktop {
       padding-top: 44px;
     }
+    @include mobile {
+      padding-top: 30px;
+    }
+    @include mobile-s {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: center;
+      gap: 10px;
+      row-gap: 18px;
+    }
   }
 
   &__brands-item {
     @include desktop {
       max-width: 145px;
+    }
+    @include mobile {
+      max-width: 120px;
     }
   }
 }

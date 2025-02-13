@@ -8,6 +8,9 @@
   @include desktop {
     padding: 280px 0 200px 0;
   }
+  @include mobile {
+    padding: 240px 0 150px 0;
+  }
 
   &__unfo {
     padding: 25px 0 100px 0;
@@ -15,6 +18,9 @@
     line-height: 30px;
     @include desktop {
       padding: 20px 0 70px 0;
+    }
+    @include mobile {
+      padding: 18px 0 35px 0;
     }
   }
 
@@ -30,6 +36,7 @@
     input {
       background: rgb(40, 48, 54);
       color: var(--color-light);
+      width: 75%;
     }
   }
 }

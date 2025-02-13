@@ -11,6 +11,9 @@
     @include desktop {
       padding: 9px 20px;
     }
+    @include mobile {
+      padding: 9px 8px;
+    }
   }
   &_con {
     border: 1px solid transparent;
@@ -51,6 +54,10 @@
     font-size: 16px;
     line-height: 30px;
     padding-bottom: 42px;
+    @include mobile {
+      line-height: 26px;
+      padding-bottom: 16px;
+    }
   }
 
   &__buttons {
@@ -71,6 +78,9 @@
         }
       }
     }
+    @include mobile {
+      gap: 0;
+    }
   }
 }
 .top {
@@ -78,12 +88,22 @@
     display: flex;
     gap: 30px;
     padding-bottom: 30px;
+    @include mobile {
+      gap: 8px;
+      padding-bottom: 17px;
+    }
   }
 
   &__info-head {
     &__name {
       font-size: 24px;
       color: var(--color-light);
+      @include mobile {
+        font-size: 18px;
+      }
+      @include mobile-s {
+        font-size: 16px;
+      }
     }
     &__payment {
       color: var(--color-accent-active);
@@ -98,6 +118,9 @@
   align-items: center;
   transition: all 0.2s;
   border-radius: 8px;
+  svg {
+    width: 20px;
+  }
 }
 .tools--active {
   background-color: #283036;
@@ -126,4 +149,17 @@
 }
 .button__like-selected {
   background-color: #283036;
+}
+.top__info-img {
+  @include mobile {
+    max-width: 50px;
+  }
+  @include mobile-s {
+    max-width: 45px;
+  }
+}
+.tools__text-info {
+  @include mobile {
+    font-size: 13px;
+  }
 }

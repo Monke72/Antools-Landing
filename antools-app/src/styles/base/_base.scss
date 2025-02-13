@@ -16,6 +16,13 @@ body {
   @include desktop {
     max-width: 900px;
   }
+
+  @include mobile {
+    max-width: 670px;
+  }
+  @include mobile-s {
+    max-width: 430px;
+  }
 }
 
 .none {

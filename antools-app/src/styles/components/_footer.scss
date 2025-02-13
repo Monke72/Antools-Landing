@@ -12,6 +12,11 @@
     @include desktop {
       gap: 70px;
     }
+    @include mobile {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
   }
 
   &__item {

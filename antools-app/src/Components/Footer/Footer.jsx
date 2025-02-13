@@ -1,21 +1,42 @@
 import iconHeader from "../Header/Icon/headerIcon.svg";
 
+const width = window.innerWidth;
+
 function Footer() {
   return (
     <div className="footer__wrapper">
       <section className="footer container">
-        <div className="footer__item-main">
-          <div className="footer__item-logo">
-            <img src={iconHeader} alt="" />
-            antools.
+        {width > 860 ? (
+          <div className="footer__item-main">
+            <div className="footer__item-logo">
+              <img src={iconHeader} alt="" />
+              antools.
+            </div>
+            <h6 className="footer__item-info">Copyright 2021. Antools</h6>
+            <p className="footer__item-text">
+              Antool is a web collection of information on paid or free Design
+              and Development tools
+            </p>
           </div>
-          <h6 className="footer__item-info">Copyright 2021. Antools</h6>
-          <p className="footer__item-text">
-            Antool is a web collection of information on paid or free Design and
-            Development tools
-          </p>
-        </div>
+        ) : (
+          ""
+        )}
         <ul className="footer__list">
+          {width < 860 ? (
+            <li className="footer__item-main">
+              <div className="footer__item-logo">
+                <img src={iconHeader} alt="" />
+                antools.
+              </div>
+              <h6 className="footer__item-info">Copyright 2021. Antools</h6>
+              <p className="footer__item-text">
+                Antool is a web collection of information on paid or free Design
+                and Development tools
+              </p>
+            </li>
+          ) : (
+            ""
+          )}
           <li className="footer__item">
             <h5 className="footer__item-title">Contact Us</h5>
             <div className="footer__item-list">

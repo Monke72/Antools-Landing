@@ -3,6 +3,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @include mobile-s {
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+  }
 
   &__name {
     display: flex;
@@ -17,6 +22,7 @@
 
   &__name-title {
     color: var(--color-light);
+    font-size: 18px;
   }
 
   &__list {
@@ -62,6 +68,8 @@
 .ant-menu-submenu-title {
   background-color: var(--color-strict-gray);
   max-width: 200px;
+  @include mobile-s {
+  }
 }
 .ant-menu {
   background-color: var(--color-strict-gray);
@@ -74,6 +82,10 @@
 .header__burger {
   @include desktop {
     width: 205px;
+  }
+  @include mobile-s {
+    width: 165px;
+    order: 3;
   }
 }
 .ant-menu-item {
@@ -185,5 +197,16 @@
 button {
   &:disabled {
     pointer-events: none;
+  }
+}
+.ant-menu-inline {
+  border-inline-end: none !important;
+}
+.ant-menu-submenu-title {
+  width: 165px !important;
+}
+.ant-menu-sub {
+  @include mobile-s {
+    left: -21px;
   }
 }

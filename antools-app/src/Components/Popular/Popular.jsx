@@ -36,6 +36,8 @@ const iconMass = [
   },
 ];
 
+const width = window.innerWidth;
+
 function Popular({ data, setLimit, uploaded, err }) {
   const [visible, setVisible] = useState(true);
   function handleClickDel() {
