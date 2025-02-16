@@ -1,6 +1,5 @@
 {
   "name": "antools-app",
-  "private": true,
   "homepage": "https://monke72.github.io/Antools",
   "version": "0.0.0",
   "type": "module",
