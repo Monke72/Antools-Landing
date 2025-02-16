@@ -32,7 +32,10 @@ function Awesome() {
           <div className="awesome__socials">
             <ul className="awesome__socials-list">
               <li className="awesome__socials-item">
-                <a href="" className="awesome__socials-link">
+                <a
+                  href="https://publicapis.io/facebook-api"
+                  className="awesome__socials-link"
+                >
                   <img
                     className="awesome__socials-icon"
                     src={facebookIcon}
@@ -41,7 +44,10 @@ function Awesome() {
                 </a>
               </li>
               <li className="awesome__socials-item">
-                <a href="" className="awesome__socials-link">
+                <a
+                  href="https://unremot.com/blog/how-to-use-instagram-api/"
+                  className="awesome__socials-link"
+                >
                   <img
                     className="awesome__socials-icon"
                     src={instIcon}
@@ -50,7 +56,10 @@ function Awesome() {
                 </a>
               </li>
               <li className="awesome__socials-item">
-                <a href="" className="awesome__socials-link">
+                <a
+                  href="https://developer.x.com/en"
+                  className="awesome__socials-link"
+                >
                   <img
                     className="awesome__socials-icon"
                     src={twitIccon}

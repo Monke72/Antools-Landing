@@ -263,10 +263,8 @@ function Header() {
     setOpenSign(false);
   };
   const handleOkSign = () => {
-    setConfirmLoading(true);
     setTimeout(() => {
       setOpenSign(false);
-      setConfirmLoading(false);
     }, 1500);
   };
 
@@ -337,7 +335,6 @@ function Header() {
         okText={"Войти"}
         cancelText={"Выйти"}
         onOk={handleOk}
-        confirmLoading={confirmLoading}
         onCancel={handleCancel}
       >
         <form action="login__form">
@@ -378,7 +375,12 @@ function Header() {
           <a href="." className="input__new">
             Забыли пароль?
           </a>
-          <button className="input__sign">Нету аккаунта?</button>
+          <button
+            className="input__sign"
+            onClick={(e) => [setOpenSign(true), setOpen(false)]}
+          >
+            Нету аккаунта?
+          </button>
         </div>
 
         <div className="header__footer-form">

@@ -152,6 +152,9 @@
   display: flex;
   gap: 20px;
   justify-content: start;
+  @include mobile {
+    padding-bottom: 15px;
+  }
 }
 .input__sign {
   width: fit-content;
@@ -193,6 +196,9 @@
   display: flex;
   justify-content: end;
   gap: 20px;
+  @include mobile-s {
+    justify-content: start;
+  }
 }
 button {
   &:disabled {
@@ -208,5 +214,10 @@ button {
 .ant-menu-sub {
   @include mobile-s {
     left: -21px;
+  }
+}
+.sign__close {
+  @include mobile {
+    font-size: 14px;
   }
 }

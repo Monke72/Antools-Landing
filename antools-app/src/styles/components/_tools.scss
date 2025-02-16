@@ -102,7 +102,7 @@
         font-size: 18px;
       }
       @include mobile-s {
-        font-size: 16px;
+        font-size: 15px;
       }
     }
     &__payment {
@@ -155,7 +155,7 @@
     max-width: 50px;
   }
   @include mobile-s {
-    max-width: 45px;
+    max-width: 42px;
   }
 }
 .tools__text-info {

@@ -38,9 +38,21 @@ function More() {
           Wow! see the latest update of the most recommended tools from reliable
           designers and developers
         </p>
-        <Button active color="#fff" btnClass="more__btn">
-          Explore More
-        </Button>
+        <a
+          href="https://hashdork.com/ru/20-best-programming-tools-for-beginners/"
+          target="_blank"
+        >
+          <Button
+            active
+            color="#fff"
+            btnClass="more__btn"
+            href={
+              "https://hashdork.com/ru/20-best-programming-tools-for-beginners/"
+            }
+          >
+            Explore More
+          </Button>
+        </a>
       </div>
       <div className="more__tools">
         <Tools data={dataJson} array={array} classN={moreClass} />
