@@ -633,6 +633,21 @@ button:disabled {
   }
 }
 
+@media (max-width: 1149px) {
+  :where(.css-dev-only-do-not-override-cdzvx5).ant-menu-light.ant-menu-inline .ant-menu-sub.ant-menu-inline,
+  :where(.css-dev-only-do-not-override-cdzvx5).ant-menu-light > .ant-menu.ant-menu-inline .ant-menu-sub.ant-menu-inline {
+    position: absolute;
+    left: -15px;
+  }
+}
+@media (max-width: 640px) {
+  :where(.css-dev-only-do-not-override-cdzvx5).ant-menu-light.ant-menu-inline .ant-menu-sub.ant-menu-inline,
+  :where(.css-dev-only-do-not-override-cdzvx5).ant-menu-light > .ant-menu.ant-menu-inline .ant-menu-sub.ant-menu-inline {
+    position: relative;
+    left: -20px;
+  }
+}
+
 .awesome {
   display: flex;
   align-items: start;

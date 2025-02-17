@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     setUploaded(false);
     fetch(
-      `http://6790b4e0af8442fd73775266.mockapi.io/data?page=1&limit=${limit}`
+      `https://6790b4e0af8442fd73775266.mockapi.io/data?page=1&limit=${limit}`
     )
       .then((res) => {
         if (!res.ok) {

@@ -221,3 +221,17 @@ button {
     font-size: 14px;
   }
 }
+:where(.css-dev-only-do-not-override-cdzvx5).ant-menu-light.ant-menu-inline
+  .ant-menu-sub.ant-menu-inline,
+:where(.css-dev-only-do-not-override-cdzvx5).ant-menu-light
+  > .ant-menu.ant-menu-inline
+  .ant-menu-sub.ant-menu-inline {
+  @include desktop {
+    position: absolute;
+    left: -15px;
+  }
+  @include mobile-s {
+    position: relative;
+    left: -20px;
+  }
+}
