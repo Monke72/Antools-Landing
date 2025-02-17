@@ -1,6 +1,6 @@
 {
   "name": "antools-app",
-  "homepage": "https://monke72.github.io/Antools",
+  "homepage": "https://monke72.github.io/Antools-Landing",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
