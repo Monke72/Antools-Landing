@@ -4,11 +4,11 @@ import react from "@vitejs/plugin-react";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "/Antools",
+  base: "/Antools-Landing/",
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: "@import 'src/styles/mixins.scss';",
+        additionalData: "@import 'src/main.scss';",
       },
     },
   },
